@@ -20,7 +20,6 @@ router.get('/', function(req, res, next) {
   // And insert something like this instead:
   Terminal.find(function(err,result){
     if(result){
-      console.log("gucci");
       res.json(result);
     }
   }) 
@@ -29,7 +28,7 @@ router.get('/', function(req, res, next) {
 
 /* GET trip with matching origin and destination listing. */
 router.get('/singleTrip/:start/:end', function(req, res, next) {
-  Trip.find({"FareType": "LOWEST"}).then(function(err,result){
+  Trip.find({"FareType": "LOWEST"},function(err,result){
     if(result){
       res.json(result);
     }
