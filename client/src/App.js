@@ -1,21 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+class Location extends Component {
+    render() {
+      return (
+        <div className="thumbnail">
+          <img className="locationIcon" alt={this.props.Code} src="https://image.flaticon.com/teams/slug/freepik.jpg"/>
+          <p>{this.props.Code}</p>
+        </div>
+      );
+    }
+}
+
 class App extends Component {
+  state = {start: []}
+
+  componentDidMount() {
+    fetch('/trips').then(res => res.json())
+    .then(start => this.setState({ start }));
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>JetBlue cheapy</h1>
+        <div className="leftCol">
+          {this.state.start.map(startObj =>
+            <Location Code={startObj.Code} />
+          )}
+        </div>
       </div>
     );
   }
 }
-
 export default App;
