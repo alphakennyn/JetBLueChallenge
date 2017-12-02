@@ -31,7 +31,7 @@ class App extends Component {
         <Grid>
           <Row className="show-grid">
           {this.state.start.map(startObj =>
-            <Col className="no-space" xs={6} sm={3} md={2}>
+            <Col className="no-space" xs={8} sm={6} md={3}>
               <Location Code={startObj.Code} />
             </Col>
           )}
