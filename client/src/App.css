@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  background-color:#F5F5DC;
   height: 100%;
   margin: 5% 5%;
 }
@@ -31,22 +30,22 @@
 }
 
 .no-space{
-  padding:0;
+  padding: 0;
 }
 
 .show-grid {
-  margin:0;
+  margin: 0;
 }
 .rightCol{
-  right:0;
+  right: 0;
   position: relative;
 }
 
 .thumbnail {
   background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  padding:0;
-  padding-bottom: 2%;
+  padding: 0.8em 0;
+  margin: 0.5em;
+  width: 95%;
 }
 
 .thumbnail:hover {
