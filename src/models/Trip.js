@@ -14,8 +14,11 @@ var TripSchema = new Schema({
   FareType: {
     type: String
   },
-  LastDatOfFare: {
+  LastDateOfFare: {
     type: Date
+  },
+  IsDomesticRoute: {
+    type: Number
   }
 },{
     collection: 'Deals'

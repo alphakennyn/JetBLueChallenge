@@ -2,8 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
 import ReactBootstrapSlider from 'react-bootstrap-slider';
 import './App.css';
-var fs = require('fs');
-var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest();
 // import { MyModal } from './Discounted.js'
 
 class Sidebar extends React.Component {
@@ -54,7 +52,7 @@ class Location extends Component {
       data => this.setState({info: data})
     ).catch(function(err) {
       console.log(err)
-    })
+    });
   }
 
   render() {
@@ -66,8 +64,8 @@ class Location extends Component {
       </div>
     );
   }
-
 }
+
 
 class App extends Component {
   state = {start: []}
@@ -81,10 +79,8 @@ class App extends Component {
     return (
       <div className="App">
         <Sidebar />
-        <div id="main">
-          <h1>JetBlue cheapy</h1>
-          
           <Grid>
+          <h1>JetBlue cheapy</h1>
             <Row className="show-grid">
             {this.state.start.map(startObj =>
               <Col className="no-space" xs={8} sm={6} md={3}>
@@ -93,7 +89,6 @@ class App extends Component {
             )}
             </Row>
           </Grid>
-        </div>
       </div>
     );
   }

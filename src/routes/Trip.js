@@ -28,7 +28,12 @@ router.get('/', function(req, res, next) {
 
 /* GET trip with matching origin and destination listing. */
 router.get('/singleTrip/:start/:end', function(req, res, next) {
-  Trip.find({"FareType": "LOWEST"},function(err,result){
+  Trip.find({
+    "FareType": "LOWEST", 
+    "OriginAirportCode": req.params.start, 
+    "DestinationAirportCode": req.params.end,
+    "IsDomesticRoute": 1
+  }, function(err, result){
     if(result){
       res.json(result);
     }

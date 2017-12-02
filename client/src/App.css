@@ -19,6 +19,9 @@
   width: 66%;
   float: right;
   left: 0;
+  overflow: hidden;
+  clear: both;
+  display: block;
 }
 .App-header {
   background-color: #222;
@@ -26,6 +29,7 @@
   padding: 20px;
   color: white;
 }
+
 
 .App-title {
   font-size: 1.5em;
@@ -41,14 +45,20 @@
 }
 
 .no-space{
+  margin-top: 0;
   padding: 0;
   width: 100%;
 }
 
 .show-grid {
+  width: 60%;
+  float: right;
+  left: 0;
+  overflow: hidden;
+  clear: both;
+  display: block;
   margin: 0;
-  max-width: 100%;
-  margin-right: 2em;
+
 }
 .rightCol{
   right: 0;
