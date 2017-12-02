@@ -1,12 +1,25 @@
 .App {
   text-align: center;
+  height: 100%;
+  margin: 5% 5%;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
+#sidebar {
+  background-color: #fdf!important;
+  width: 33%;
+  height: 100%;
+}
 
+#main {
+  background-color: blue;
+  width: 66%;
+  float: right;
+  left: 0;
+}
 .App-header {
   background-color: #222;
   height: 150px;
@@ -22,6 +35,38 @@
   font-size: large;
 }
 
+.leftCol{
+  left:0;
+  position: relative;
+}
+
+.no-space{
+  padding: 0;
+  width: 100%;
+}
+
+.show-grid {
+  margin: 0;
+  max-width: 100%;
+  margin-right: 2em;
+}
+.rightCol{
+  right: 0;
+  position: relative;
+}f
+
+.thumbnail {
+  background-color: white;
+}
+
+.thumbnail:hover {
+  cursor: pointer;  
+}
+
+.locationIcon{
+  width:50px;
+  height:auto;
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
