@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
-import ReactBootstrapSlider from 'react-bootstrap-slider';
+import {ReactBootstrapSlider} from 'react-bootstrap-slider';
 import './App.css';
 // import { MyModal } from './Discounted.js'
 
@@ -22,7 +22,7 @@ class Sidebar extends React.Component {
         change={this.changeValue}
         slideStop={this.changeValue}
         step={1}
-        max={7}
+        max={10}
         min={1}
         orientation="vertical"
         reversed={true}
@@ -68,25 +68,46 @@ class Location extends Component {
 
 
 class App extends Component {
-  state = {start: []}
+  constructor(props) {
+    super(props)
+    
+    this.handleShowMore = this.handleShowMore.bind(this)
+    
+    this.state = {
+      start: [],
+      showItems: 2
+    }
+  }
+  // state = {start: [], showItems: 10}
 
   componentDidMount() {
     fetch('/trips').then(res => res.json())
     .then(start => this.setState({ start }));
   }
 
+  handleShowMore(){
+    this.setState({
+      showItems:
+        this.state.showItems >= this.state.start.length ?
+          this.state.showItems : this.state.showItems + 4
+    })
+  }
+
   render() {
+    const myLocation = this.state.start.slice(0, this.state.showItems).map(startObj =>
+                          <Col className="no-space" xs={8} sm={6} md={3}>
+                            <Location Code={startObj.Code} location={startObj.Code} />
+                          </Col>
+                        )
+
     return (
       <div className="App">
-        <Sidebar />
+          <Sidebar />
           <Grid>
-          <h1>JetBlue cheapy</h1>
+            <h1>JetBlue cheapy</h1>
+            <button onClick={this.handleShowMore}>Show more!</button>
             <Row className="show-grid">
-            {this.state.start.map(startObj =>
-              <Col className="no-space" xs={8} sm={6} md={3}>
-                <Location Code={startObj.Code} location={startObj.Code} />
-              </Col>
-            )}
+              {myLocation}
             </Row>
           </Grid>
       </div>
