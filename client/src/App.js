@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
 import './App.css';
-// import { MyModal } from './Discounted.js'
+import { Discounted } from './Discounted.js'
 
 
 class Location extends Component {
@@ -27,12 +27,14 @@ class App extends Component {
     return (
       <div className="App">
         <h1>JetBlue cheapy</h1>
-        
+        <div className="configs">
+          <Discounted />
+        </div>
         <Grid>
           <Row className="show-grid">
           {this.state.start.map(startObj =>
             <Col className="no-space" xs={6} sm={3} md={2}>
-              <Location Code={startObj.Code} />
+              <Location Code={startObj  .Code} />
             </Col>
           )}
           </Row>

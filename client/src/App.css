@@ -57,6 +57,10 @@
   width:50px;
   height:auto;
 }
+
+.configs{
+  margin: 10% 0;
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
