@@ -46,11 +46,10 @@ class Sidebar extends React.Component {
         change={this.changeValue}
         slideStop={this.changeValue}
         step={1}
-        max={7}
-        min={1}
+        max={10}
+        min={0}
         orientation="vertical"
-        reversed={true}
-        disabled="disabled" />
+        reversed={true}/>
           <p>{this.state.mySentiment.score}</p>
       </div>
     );
@@ -62,7 +61,6 @@ class Location extends Component {
 
   propTypes: {
     location: PropTypes.string
-
   }
 
   constructor() {
@@ -139,17 +137,10 @@ class App extends Component {
       <div className="App">
         <Sidebar />
         <Grid>
-          <Row className="show-grid">  
-            <Col sm={8} md={9}>
-              <Sidebar />
-            </Col>
-            <Col sm={4} md={3}>
-              <button onClick={this.handleShowMore}>Show more!</button>
-              <Row className="show-grid">
-                {myLocation}
-              </Row>
-            </Col>
-          </Row>  
+          <button className="btn btn-primary" onClick={this.handleShowMore}>Show more!</button>
+          <Row className="show-grid">
+            {myLocation}
+          </Row> 
         </Grid>
       </div>
     );

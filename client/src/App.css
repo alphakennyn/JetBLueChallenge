@@ -19,8 +19,9 @@
   background-color: #07b2ac!important;
   width: 33%;
   height: 100%;
-  left-margin: 0px!important;
+  /* margin-left: 0px!important; */
   position: fixed;
+  left:0;
 }
 h1 {
   font-family: Roboto;
