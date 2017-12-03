@@ -4,6 +4,11 @@
   margin: 5% 5%;
 }
 
+#Header {
+  height:auto !important;
+  width: 100%;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;

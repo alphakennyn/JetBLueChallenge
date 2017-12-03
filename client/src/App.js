@@ -6,7 +6,15 @@ import './App.css';
 
 // import { googleLib } from './google.js'
 
-
+class HeadBanner extends React.Component {
+  render() {
+    return (
+      <div>
+        <img src="./images/simplyFly_banner.png" />
+      </div>
+    );
+  }  
+}
 class Sidebar extends React.Component {
 
   constructor() {
@@ -117,12 +125,14 @@ class App extends Component {
 
     return (
       <div className="App">
+        <HeadBanner id="Header">
+          <h1>SimpliFly</h1>
+        </HeadBanner>
         <Grid>
-          <h1 id="">SimpliFly</h1>
+          
           <Row className="show-grid">  
             <Col sm={8} md={9}>
               <Sidebar />
-              <googleLib text="Hello, world!"/>
             </Col>
             <Col sm={4} md={3}>
               <button onClick={this.handleShowMore}>Show more!</button>
