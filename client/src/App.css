@@ -5,6 +5,11 @@
   height: 100%;
 }
 
+#Header {
+  height:auto !important;
+  width: 100%;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -23,13 +28,10 @@ h1 {
 #root {
   margin: 0;
   padding: 0;
-
 }
 
 #main {
   background-color: blue;
-  width: 66%;
-  float: right;
   left: 0;
   overflow: hidden;
   clear: both;
@@ -39,7 +41,7 @@ h1 {
   background-color: #222;
   height: 150px;
   padding: 20px;
-  color: white;
+  color:   white;
 }
 
 .App-title {
@@ -61,16 +63,6 @@ h1 {
   width: 100%;
 }
 
-.show-grid {
-  width: 60%;
-  float: right;
-  left: 0;
-  overflow: hidden;
-  clear: both;
-  display: block;
-  margin: 0;
-
-}
 .rightCol{
   right: 0;
   position: relative;
