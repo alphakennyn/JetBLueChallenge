@@ -16,6 +16,7 @@ mongoose.connect(configDB.url); // connect to database
 var index = require('./src/routes/index');
 var users = require('./src/routes/users');
 var Trip = require('./src/routes/Trip');
+var Google = require('./src/routes/google');
 
 
 var app = express();
@@ -32,9 +33,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//ROUTES
 app.use('/', index);
 app.use('/users', users);
 app.use('/trips', Trip);
+app.use('/googleML', Google);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

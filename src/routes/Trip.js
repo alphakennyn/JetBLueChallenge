@@ -6,20 +6,14 @@ var Terminal         = require('../models/Terminals');
 
 /* GET trip with matching origin and destination listing. */
 
-// router.get('/', function(req, res, next) {
-//   Trip.find({"FareType": "LOWEST"}).limit(10).then(function(result,err){
-//     if(result){
-//       res.json(result);
-//     }
-//   }) 
-  
-// });
+
 
 /* GET all Terminal listing. */
 router.get('/', function(req, res, next) {
   // And insert something like this instead:
-  Terminal.find(function(err,result){
+  Trip.find(function(err,result){
     if(result){
+      // console.log(result.DestinationAirportCode);
       res.json(result);
     }
   }) 
@@ -27,13 +21,8 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET trip with matching origin and destination listing. */
-router.get('/singleTrip/:start/:end', function(req, res, next) {
-  Trip.find({
-    "FareType": "LOWEST", 
-    "OriginAirportCode": req.params.start, 
-    "DestinationAirportCode": req.params.end,
-    "IsDomesticRoute": 1
-  }, function(err, result){
+router.get('/singleTrip/:end', function(req, res, next) {
+  Trip.find({ "DestinationAirportCode": req.params.end} ,function(err,result){
     if(result){
       res.json(result);
     }
