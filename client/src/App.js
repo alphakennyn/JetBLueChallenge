@@ -15,7 +15,7 @@ class HeadBanner extends React.Component {
   render() {
     return (
       <div>
-        <img alt="bannerpic" src={require("./images/simplyFly_banner.png")} />
+        <img id="bannerpic" alt="bannerpic" src={require("./images/simplyFly_banner.png")} />
       </div>
     );
   }  
@@ -63,36 +63,41 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <div id="sidebar">
-       <h1>SimpliFly</h1>
-       <h3>What do you want in a vacation?</h3>
+      
+    <div id="sidebar">
+        <h1>SimpliFly</h1>
+        <h3>What do you want in a vacation?</h3>
 
-       <h4>Weather</h4>
-       <ReactBootstrapSlider
-        value={this.state.weatherValue}
-        change={this.changeWeatherValue}
-        step={1}
-        max={10}
-        min={0}
-        />
+        <h4>Weather</h4>
+        <ReactBootstrapSlider
+          value={this.state.weatherValue}
+          change={this.changeWeatherValue}
+          step={1}
+          max={10}
+          min={0}
+          />
 
-       <h4>Low Cost</h4>
-       <ReactBootstrapSlider
-        value={this.state.priceValue}
-        change={this.changePriceValue}
-        step={1}
-        max={10}
-        min={0}
-        />    
+        <h4>Low Cost</h4>
+        <ReactBootstrapSlider
+          value={this.state.priceValue}
+          change={this.changePriceValue}
+          step={1}
+          max={10}
+          min={0}
+          />    
 
-       <h4>Popularity</h4>
-       <ReactBootstrapSlider
-        value={this.state.desireValue}
-        change={this.changeDesireValue}
-        step={1}
-        max={10}
-        min={0}
-        />                
+        <h4>Popularity</h4>
+        <ReactBootstrapSlider
+          value={this.state.desireValue}
+          change={this.changeDesireValue}
+          step={1}
+          max={10}
+          min={0}
+          />        
+          
+          <div id="bannerSpot">
+          <HeadBanner/>
+          </div>        
       </div>
     );
   }
