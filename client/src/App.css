@@ -1,4 +1,15 @@
 @import url("http://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Alegreya");
+body {
+  font-family: 'Hasklig ExtraLight', 'Roboto', Roboto!important;
+}
+p {
+  font-size: 12px;
+  font-family: 'Helvetica';
+}
+
+h3 {
+  font-family: 'Hasklig ExtraLight', 'Roboto', Roboto!important;
+}
 
 .App {
   text-align: center;
@@ -18,16 +29,14 @@
   position: fixed;
   left:0;
 }
-h1 {
-  font-family: Roboto;
-  
-}
+
 #root {
   margin: 0;
   padding: 0;
 }
 
 #main {
+  top: 1em;
   background-color: blue;
   left: 0;
   overflow: hidden;
@@ -60,14 +69,18 @@ h1 {
 }
 
 .thumbnail {
-  background-color: white;
+  background: white;
+  border: none;
+
 }
 
 .thumbnail:hover {
-  cursor: pointer;  
+  cursor: pointer; 
+  background-color: rgb(255, 255, 255, 0.6); 
 }
 
 .show-grid {
+  margin-top: 1em;
   right:2em;
   position:absolute;
   width: 60%;

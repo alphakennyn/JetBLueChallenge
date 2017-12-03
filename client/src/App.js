@@ -141,17 +141,17 @@ class Location extends Component {
     return (
       <div className="thumbnail">
         <img className="locationIcon" alt={this.props.Code} src={require("./images/airport_pics/"+ this.props.Code +".png")} />
-        <p>{this.props.Code}</p>
+        <h6>{this.props.Code}</h6>
         <p>{this.state.info.city}, {this.state.info.state}</p>
         <p>{this.findProp(this.state.info, 'weather.temp')}</p>
+        <p>${this.props.cost} on JetBlue</p>
       </div>
     );
   }
 }
 
-
-class App extends Component {
-  constructor() {
+class MyGrid extends Component {
+    constructor() {
     super();
     this.handleShowMore = this.handleShowMore.bind(this);
     this.sortPrice = this.sortPrice.bind(this);
@@ -192,19 +192,34 @@ class App extends Component {
   render() {
     const myLocation = this.state.destinations.slice(0, this.state.showItems).map(startObj =>
                           <Col sm={6} md={6}>
-                            <Location location={startObj.DestinationAirportCode} Code={startObj.DestinationAirportCode} />
+                            <Location location={startObj.DestinationAirportCode} Code={startObj.DestinationAirportCode}
+                            cost={startObj.FareDollarAmount} />
                           </Col>
                         )
 
     return (
-      <div className="App">
-        <Sidebar setPrice={this.sortPrice}  />
+      <div>
         <Grid>              
               <Row className="show-grid">
                 {myLocation}
                 <button className="btn btn-primary" onClick={this.handleShowMore}>Show more!</button>
               </Row>
         </Grid>
+      </div>
+    );
+  }
+
+}
+
+class App extends Component {
+
+
+  render() {
+
+    return (
+      <div className="App">
+        <Sidebar setPrice={this.sortPrice}  />
+        <MyGrid />
       </div>
     );
   }
