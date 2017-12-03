@@ -11,14 +11,20 @@ var TripSchema = new Schema({
   DestinationAirportCode: {
     type: String    
   },      
-  FareType: {
-    type: String
-  },
-  LastDateOfFare: {
-    type: Date
-  },
-  IsDomesticRoute: {
+  FareDollarAmount: {
     type: Number
+  },
+  TaxDollarAmount: {
+    type: Number
+  },
+  Desirability: {
+    type: Number
+  },
+  UrbanBigness: {
+    type: Number
+  },
+  Comments: {
+    type: String
   }
 },{
     collection: 'Deals'

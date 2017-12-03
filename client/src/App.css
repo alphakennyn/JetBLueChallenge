@@ -1,7 +1,8 @@
+@import url("http://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Alegreya")
+
 .App {
   text-align: center;
   height: 100%;
-  margin: 5% 5%;
 }
 
 .App-logo {
@@ -9,9 +10,20 @@
   height: 80px;
 }
 #sidebar {
-  background-color: #fdf!important;
+  color: #fff;
+  background-color: #07b2ac!important;
   width: 33%;
   height: 100%;
+  left-margin: 0px!important;
+  position: fixed;
+}
+h1 {
+  font-family: Roboto;
+}
+#root {
+  margin: 0;
+  padding: 0;
+
 }
 
 #main {
@@ -29,7 +41,6 @@
   padding: 20px;
   color: white;
 }
-
 
 .App-title {
   font-size: 1.5em;

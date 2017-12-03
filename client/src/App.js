@@ -16,7 +16,8 @@ class Sidebar extends React.Component {
   render() {
     return (
       <div id="sidebar">
-       <header>What do you want in a vacation?</header>
+       <h1>SimpliFly</h1>
+       <h3>What do you want in a vacation?</h3>
        <ReactBootstrapSlider
         value={this.state.currentValue}
         change={this.changeValue}
@@ -37,6 +38,7 @@ class Location extends Component {
 
   propTypes: {
     location: PropTypes.string
+
   }
 
   constructor() {
@@ -68,7 +70,7 @@ class Location extends Component {
   render() {
     return (
       <div className="thumbnail">
-        <img className="locationIcon" alt={this.props.Code} src="src/airport_pics/{this.props.Code}.png"/>
+        <img className="locationIcon" alt={this.props.Code} src={"/src/airport_pics/"+this.props.Code+".png"}/>
         <p>{this.props.Code}</p>
         <p>{this.state.info.city}, {this.state.info.state}</p>
         <p>{this.findProp(this.state.info, 'weather.temp')}</p>
@@ -91,11 +93,13 @@ class App extends Component {
       <div className="App">
         <Sidebar />
           <Grid>
-          <h1>JetBlue cheapy</h1>
             <Row className="show-grid">
             {this.state.start.map(startObj =>
               <Col className="no-space" xs={8} sm={6} md={3}>
-                <Location Code={startObj.Code} location={startObj.Code} />
+                <Location 
+                  Code={startObj.DestinationAirportCode} 
+                  location={startObj.DestinationAirportCode}
+                />
               </Col>
             )}
             </Row>
