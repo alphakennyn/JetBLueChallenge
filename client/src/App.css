@@ -1,7 +1,13 @@
+@import url("http://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Alegreya")
+
 .App {
   text-align: center;
   height: 100%;
-  margin: 5% 5%;
+}
+
+#Header {
+  height:auto !important;
+  width: 100%;
 }
 
 .App-logo {
@@ -9,22 +15,34 @@
   height: 80px;
 }
 #sidebar {
-  background-color: #fdf!important;
+  color: #fff;
+  background-color: #07b2ac!important;
   width: 33%;
   height: 100%;
+  padding: 5% !important;
+  position: fixed;
+  left:0;
+}
+h1 {
+  font-family: Roboto;
+}
+#root {
+  margin: 0;
+  padding: 0;
 }
 
 #main {
   background-color: blue;
-  width: 66%;
-  float: right;
   left: 0;
+  overflow: hidden;
+  clear: both;
+  display: block;
 }
 .App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
-  color: white;
+  color:   white;
 }
 
 .App-title {
@@ -41,15 +59,11 @@
 }
 
 .no-space{
+  margin-top: 0;
   padding: 0;
   width: 100%;
 }
 
-.show-grid {
-  margin: 0;
-  max-width: 100%;
-  margin-right: 2em;
-}
 .rightCol{
   right: 0;
   position: relative;
@@ -63,8 +77,14 @@
   cursor: pointer;  
 }
 
+.show-grid {
+  right:2em;
+  position:absolute;
+  width: 60%;
+}
+
 .locationIcon{
-  width:50px;
+  width:100%;
   height:auto;
 }
 @keyframes App-logo-spin {
