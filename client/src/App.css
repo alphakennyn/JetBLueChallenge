@@ -19,7 +19,7 @@
   background-color: #07b2ac!important;
   width: 33%;
   height: 100%;
-  /* margin-left: 0px!important; */
+  padding: 5% !important;
   position: fixed;
   left:0;
 }
@@ -77,8 +77,14 @@ h1 {
   cursor: pointer;  
 }
 
+.show-grid {
+  right:2em;
+  position:absolute;
+  width: 60%;
+}
+
 .locationIcon{
-  width:50px;
+  width:100%;
   height:auto;
 }
 @keyframes App-logo-spin {
