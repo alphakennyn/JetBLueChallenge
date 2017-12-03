@@ -58,9 +58,7 @@ class Sidebar extends React.Component {
         max={10}
         min={0}
         />
-        <p>{this.state.weatherValue}</p>
-        <p>{this.state.mySentiment.score}</p>
-          
+          <p>{this.state.mySentiment.score}</p>
       </div>
     );
   }
@@ -146,8 +144,7 @@ class App extends Component {
     return (
       <div className="App">
         <Sidebar />
-        <Grid>
-              
+        <Grid>              
               <Row className="show-grid">
                 {myLocation}
                 <button className="btn btn-primary" onClick={this.handleShowMore}>Show more!</button>
