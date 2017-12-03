@@ -62,8 +62,7 @@ class Sidebar extends React.Component {
   }  
 
   render() {
-    return (
-      
+    return (      
     <div id="sidebar">
         <h1>SimpliFly</h1>
         <h3>What do you want in a vacation?</h3>
@@ -191,6 +190,7 @@ class App extends Component {
 
   render() {
     const myLocation = this.state.destinations.slice(0, this.state.showItems).map(startObj =>
+
                           <Col sm={6} md={6}>
                             <Location location={startObj.DestinationAirportCode} Code={startObj.DestinationAirportCode} />
                           </Col>
