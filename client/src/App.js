@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
 import {ReactBootstrapSlider} from 'react-bootstrap-slider';
+// import {BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 
 import BootstrapSlider from 'bootstrap-slider/dist/css/bootstrap-slider.min.css';
@@ -14,15 +15,15 @@ class HeadBanner extends React.Component {
   render() {
     return (
       <div>
-        <img alt="bannerpic" src={require("./images/simplyFly_banner.png")} />
+        <img id="bannerpic" alt="bannerpic" src={require("./images/simplyFly_banner.png")} />
       </div>
     );
   }  
 }
 class Sidebar extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       weatherValue: 5,
       priceValue: 5,
@@ -46,47 +47,56 @@ class Sidebar extends React.Component {
   }
 
   changeWeatherValue(event) {
-      this.setState({weatherValue: event.target.value});      
+      this.setState({weatherValue: event.target.value});  
+          
   }
   changePriceValue(event) {
-      this.setState({priceValue: event.target.value});      
+      this.setState({priceValue: event.target.value});
+      if(this.state.priceValue > this.state.weatherValue || this.state.priceValue > this.state.weatherValue > this.state.desireValue){
+        this.props.setPrice;
+        console.log("price value is big")
+      }      
   }
   changeDesireValue(event) {
       this.setState({desireValue: event.target.value});      
   }  
 
   render() {
-    return (
-      <div id="sidebar">
-       <h1>SimpliFly</h1>
-       <h3>What do you want in a vacation?</h3>
+    return (      
+    <div id="sidebar">
+        <h1>SimpliFly</h1>
+        <h3>What do you want in a vacation?</h3>
 
-       <h4>Weather</h4>
-       <ReactBootstrapSlider
-        value={this.state.weatherValue}
-        change={this.changeWeatherValue}
-        step={1}
-        max={10}
-        min={0}
-        />
+        <h4>Weather</h4>
+        <ReactBootstrapSlider
+          value={this.state.weatherValue}
+          change={this.changeWeatherValue}
+          step={1}
+          max={10}
+          min={0}
+          />
 
-       <h4>Low Cost</h4>
-       <ReactBootstrapSlider
-        value={this.state.priceValue}
-        change={this.changePriceValue}
-        step={1}
-        max={10}
-        min={0}
-        />    
+        <h4>Low Cost</h4>
+        <ReactBootstrapSlider
+          value={this.state.priceValue}
+          change={this.changePriceValue}
+          step={1}
+          max={10}
+          min={0}
+          />    
 
-       <h4>Popularity</h4>
-       <ReactBootstrapSlider
-        value={this.state.desireValue}
-        change={this.changeDesireValue}
-        step={1}
-        max={10}
-        min={0}
-        />                
+        <h4>Popularity</h4>
+        <ReactBootstrapSlider
+          value={this.state.desireValue}
+          change={this.changeDesireValue}
+          step={1}
+          max={10}
+          min={0}
+          />        
+          
+          <div id="bannerSpot">
+          <HeadBanner/>
+          </div>        
       </div>
     );
   }
@@ -143,27 +153,44 @@ class App extends Component {
   constructor() {
     super();
     this.handleShowMore = this.handleShowMore.bind(this);
+    this.sortPrice = this.sortPrice.bind(this);
+    this.sortWeather = this.sortWeather.bind(this);    
     this.state = {
-      start: [],
+      destinations: [],
       showItems: 4
     }
+    
+  }
+  sortWeather(){
+    this.setState(prevState => {
+      this.state.destinations.sort((a, b) => (a.price - b.price))
+    });
+  }
+
+  sortPrice(){
+    this.setState(prevState => {
+      this.state.destinations.sort((a, b) => (a.FareDollarAmount - b.FareDollarAmount))
+    });
+    this.setState(this.state);
+    console.log("change price order!")
   }
 
   componentDidMount() {
     fetch('/trips').then(res => res.json())
-    .then(start => this.setState({ start }));
+    .then(destinations => this.setState({ destinations }));
   }
 
   handleShowMore(){
     this.setState({
       showItems:
-        this.state.showItems >= this.state.start.length ?
+        this.state.showItems >= this.state.destinations.length ?
           this.state.showItems : this.state.showItems + 2
     })
   }
 
   render() {
-    const myLocation = this.state.start.slice(0, this.state.showItems).map(startObj =>
+    const myLocation = this.state.destinations.slice(0, this.state.showItems).map(startObj =>
+
                           <Col sm={6} md={6}>
                             <Location location={startObj.DestinationAirportCode} Code={startObj.DestinationAirportCode} />
                           </Col>
@@ -171,7 +198,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Sidebar />
+        <Sidebar setPrice={this.sortPrice}  />
         <Grid>              
               <Row className="show-grid">
                 {myLocation}
