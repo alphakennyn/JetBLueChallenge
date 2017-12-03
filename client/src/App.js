@@ -42,8 +42,8 @@ class Sidebar extends React.Component {
     });
   }
 
-  changeValue() {
-    this.setState({weatherValue: this});
+  changeValue(event) {
+      this.setState({weatherValue: event.target.value});      
   }
 
   render() {
@@ -58,6 +58,7 @@ class Sidebar extends React.Component {
         max={10}
         min={0}
         />
+        <p>{this.state.weatherValue}</p>
           <p>{this.state.mySentiment.score}</p>
       </div>
     );
