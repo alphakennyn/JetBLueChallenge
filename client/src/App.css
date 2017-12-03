@@ -10,14 +10,15 @@
 }
 #sidebar {
   background-color: #fdf!important;
-  width: 33%;
-  height: 100%;
+  width: 60%;
+  height: 50%;
+  padding: 10% 0;
+  position: fixed;
+  z-index: 10;
 }
 
 #main {
   background-color: blue;
-  width: 66%;
-  float: right;
   left: 0;
   overflow: hidden;
   clear: both;
@@ -50,16 +51,6 @@
   width: 100%;
 }
 
-.show-grid {
-  width: 60%;
-  float: right;
-  left: 0;
-  overflow: hidden;
-  clear: both;
-  display: block;
-  margin: 0;
-
-}
 .rightCol{
   right: 0;
   position: relative;

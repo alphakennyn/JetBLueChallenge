@@ -4,29 +4,46 @@ import {ReactBootstrapSlider} from 'react-bootstrap-slider';
 import './App.css';
 // import { MyModal } from './Discounted.js'
 
+// import { googleLib } from './google.js'
+
+
 class Sidebar extends React.Component {
 
   constructor() {
     super();
     this.state = {
       currentValue: 3,
+      mySentiment: {}
     }
+  }
+
+  componentWillMount() {
+    fetch('/googleML')
+    .then(
+      res => res.json()
+    ).then(
+      data => this.setState({mySentiment: data})
+    ).catch(function(err) {
+      console.log(err)
+    });
   }
 
   render() {
     return (
       <div id="sidebar">
-       <header>What do you want in a vacation?</header>
-       <ReactBootstrapSlider
-        value={this.state.currentValue}
-        change={this.changeValue}
-        slideStop={this.changeValue}
-        step={1}
-        max={10}
-        min={1}
-        orientation="vertical"
-        reversed={true}
-        disabled="disabled" />
+        <header>What do you want in a vacation?</header>
+        <ReactBootstrapSlider
+          value={this.state.currentValue}
+          change={this.changeValue}
+          slideStop={this.changeValue}
+          step={1}
+          max={10}
+          min={1}
+          orientation="vertical"
+          reversed={true}
+          disabled="disabled" />
+          <p>Hello</p>
+          <p>{this.state.mySentiment.score}</p>
       </div>
     );
   }
@@ -68,11 +85,9 @@ class Location extends Component {
 
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    
-    this.handleShowMore = this.handleShowMore.bind(this)
-    
+  constructor() {
+    super();
+    this.handleShowMore = this.handleShowMore.bind(this);
     this.state = {
       start: [],
       showItems: 2
@@ -102,14 +117,21 @@ class App extends Component {
 
     return (
       <div className="App">
-          <Sidebar />
-          <Grid>
-            <h1>JetBlue cheapy</h1>
-            <button onClick={this.handleShowMore}>Show more!</button>
-            <Row className="show-grid">
-              {myLocation}
-            </Row>
-          </Grid>
+        <Grid>
+          <h1 id="">SimpliFly</h1>
+          <Row className="show-grid">  
+            <Col sm={8} md={9}>
+              <Sidebar />
+              <googleLib text="Hello, world!"/>
+            </Col>
+            <Col sm={4} md={3}>
+              <button onClick={this.handleShowMore}>Show more!</button>
+              <Row className="show-grid">
+                {myLocation}
+              </Row>
+            </Col>
+          </Row>  
+        </Grid>
       </div>
     );
   }
