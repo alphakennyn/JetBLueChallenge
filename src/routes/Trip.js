@@ -1,12 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Trip         = require('../models/Trip');
-var Terminal         = require('../models/Terminals');
-
-/* GET trip with matching origin and destination listing. */
-
-
+var Trip = require('../models/Trip');
 
 /* GET all Terminal listing. */
 router.get('/', function(req, res, next) {
@@ -19,18 +14,5 @@ router.get('/', function(req, res, next) {
   }) 
   
 });
-
-/* GET trip with matching origin and destination listing. */
-router.get('/singleTrip/:end', function(req, res, next) {
-  Trip.find({ "DestinationAirportCode": req.params.end} ,function(err,result){
-    if(result){
-      res.json(result);
-    }
-  }) 
-  
-});
-
-
-
 
 module.exports = router;

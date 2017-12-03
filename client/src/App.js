@@ -39,18 +39,18 @@ class Sidebar extends React.Component {
   render() {
     return (
       <div id="sidebar">
-        <header>What do you want in a vacation?</header>
-        <ReactBootstrapSlider
-          value={this.state.currentValue}
-          change={this.changeValue}
-          slideStop={this.changeValue}
-          step={1}
-          max={10}
-          min={1}
-          orientation="vertical"
-          reversed={true}
-          disabled="disabled" />
-          <p>Hello</p>
+       <h1>SimpliFly</h1>
+       <h3>What do you want in a vacation?</h3>
+       <ReactBootstrapSlider
+        value={this.state.currentValue}
+        change={this.changeValue}
+        slideStop={this.changeValue}
+        step={1}
+        max={7}
+        min={1}
+        orientation="vertical"
+        reversed={true}
+        disabled="disabled" />
           <p>{this.state.mySentiment.score}</p>
       </div>
     );
@@ -62,6 +62,7 @@ class Location extends Component {
 
   propTypes: {
     location: PropTypes.string
+
   }
 
   constructor() {
@@ -79,13 +80,24 @@ class Location extends Component {
       console.log(err)
     });
   }
+  findProp(obj, prop, defval){
+    if (typeof defval == 'undefined') defval = null;
+    prop = prop.split('.');
+    for (var i = 0; i < prop.length; i++) {
+        if(typeof obj[prop[i]] == 'undefined')
+            return defval;
+        obj = obj[prop[i]];
+    }
+    return obj;
+}
 
   render() {
     return (
       <div className="thumbnail">
-        <img className="locationIcon" alt={this.props.Code} src="https://image.flaticon.com/teams/slug/freepik.jpg"/>
+        <img className="locationIcon" alt={this.props.Code} src={"/src/airport_pics/"+this.props.Code+".png"}/>
         <p>{this.props.Code}</p>
         <p>{this.state.info.city}, {this.state.info.state}</p>
+        <p>{this.findProp(this.state.info, 'weather.temp')}</p>
       </div>
     );
   }
@@ -125,11 +137,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <HeadBanner id="Header">
-          <h1>SimpliFly</h1>
-        </HeadBanner>
+        <Sidebar />
         <Grid>
-          
           <Row className="show-grid">  
             <Col sm={8} md={9}>
               <Sidebar />
