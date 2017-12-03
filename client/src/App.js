@@ -54,13 +54,24 @@ class Location extends Component {
       console.log(err)
     });
   }
+  findProp(obj, prop, defval){
+    if (typeof defval == 'undefined') defval = null;
+    prop = prop.split('.');
+    for (var i = 0; i < prop.length; i++) {
+        if(typeof obj[prop[i]] == 'undefined')
+            return defval;
+        obj = obj[prop[i]];
+    }
+    return obj;
+}
 
   render() {
     return (
       <div className="thumbnail">
-        <img className="locationIcon" alt={this.props.Code} src="https://image.flaticon.com/teams/slug/freepik.jpg"/>
+        <img className="locationIcon" alt={this.props.Code} src="src/airport_pics/{this.props.Code}.png"/>
         <p>{this.props.Code}</p>
         <p>{this.state.info.city}, {this.state.info.state}</p>
+        <p>{this.findProp(this.state.info, 'weather.temp')}</p>
       </div>
     );
   }
