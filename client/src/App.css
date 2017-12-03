@@ -1,13 +1,8 @@
-@import url("http://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Alegreya")
+@import url("http://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Alegreya");
 
 .App {
   text-align: center;
   height: 100%;
-}
-
-#Header {
-  height:auto !important;
-  width: 100%;
 }
 
 .App-logo {

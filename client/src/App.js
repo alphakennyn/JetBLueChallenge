@@ -29,6 +29,9 @@ class Sidebar extends React.Component {
       desireValue: 5,
       mySentiment: {}
     }
+    this.changeWeatherValue = this.changeWeatherValue.bind(this);
+    this.changePriceValue = this.changePriceValue.bind(this);
+    this.changeDesireValue = this.changeDesireValue.bind(this);      
   }
 
   componentWillMount() {
@@ -42,24 +45,48 @@ class Sidebar extends React.Component {
     });
   }
 
-  changeValue(event) {
+  changeWeatherValue(event) {
       this.setState({weatherValue: event.target.value});      
   }
+  changePriceValue(event) {
+      this.setState({priceValue: event.target.value});      
+  }
+  changeDesireValue(event) {
+      this.setState({desireValue: event.target.value});      
+  }  
 
   render() {
     return (
       <div id="sidebar">
        <h1>SimpliFly</h1>
        <h3>What do you want in a vacation?</h3>
+
+       <h4>Weather</h4>
        <ReactBootstrapSlider
         value={this.state.weatherValue}
-        change={this.changeValue}
+        change={this.changeWeatherValue}
         step={1}
         max={10}
         min={0}
         />
-        <p>{this.state.weatherValue}</p>
-          <p>{this.state.mySentiment.score}</p>
+
+       <h4>Low Cost</h4>
+       <ReactBootstrapSlider
+        value={this.state.priceValue}
+        change={this.changePriceValue}
+        step={1}
+        max={10}
+        min={0}
+        />    
+
+       <h4>Popularity</h4>
+       <ReactBootstrapSlider
+        value={this.state.desireValue}
+        change={this.changeDesireValue}
+        step={1}
+        max={10}
+        min={0}
+        />                
       </div>
     );
   }
@@ -137,7 +164,7 @@ class App extends Component {
 
   render() {
     const myLocation = this.state.start.slice(0, this.state.showItems).map(startObj =>
-                          <Col className="no-space" xs={6} sm={6} md={6}>
+                          <Col sm={6} md={6}>
                             <Location location={startObj.DestinationAirportCode} Code={startObj.DestinationAirportCode} />
                           </Col>
                         )
