@@ -101,7 +101,7 @@ class Location extends Component {
   render() {
     return (
       <div className="thumbnail">
-        <img className="locationIcon" alt={this.props.Code} src={require("./images/airport_pics/SEA.png")} />
+        <img className="locationIcon" alt={this.props.Code} src={require("./images/airport_pics/"+ this.props.Code +".png")} />
         <p>{this.props.Code}</p>
         <p>{this.state.info.city}, {this.state.info.state}</p>
         <p>{this.findProp(this.state.info, 'weather.temp')}</p>
